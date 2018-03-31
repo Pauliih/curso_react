@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import cars from './data/cars.json';
 import './App.css';
 
 class Title extends Component {
@@ -10,36 +9,16 @@ class Title extends Component {
 // Cuando queremos que nuestros componentes tenga un valor por defecto para las props 
 // Default Props
 Title.defaultProps = {
-  text: 'Trabajando con listas con objetos'
+  text: 'Eventos'
 };
-
-class CarItem extends Component {
-  render() {
-    const {car} = this.props;
-    return (
-      <li>
-        <p><strong>Nombre: {car.name}</strong></p>
-        <p><strong>Marca: {car.company}</strong></p>
-      </li>
-    );
-  }
-}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Title />
-        <ul>
-          {
-            // Transformo cada objeto 
-            cars.map(car => {
-              return (
-                <CarItem key={car.id} car={car} />
-              );
-            })
-          }
-        </ul>
+        {/* Evento onClick del botón */}
+        <button onClick={() => alert('Hi There!')}>Hi There!</button>
       </div>
     );
   }
