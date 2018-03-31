@@ -17,12 +17,11 @@ class App extends Component {
     super();
     this.state = { mouseX: 0, 
       mouseY: 0 };
-    // 1) Enlazamos el método que controla al evento  
-    // Utilizando el método bind, que devuelve el mismo método pero en el contexto correcto.
-    this.handleMouseMove = this.handleMouseMove.bind(this);
+    // this.handleMouseMove = this.handleMouseMove.bind(this);
   }
   // Creo el controlador del evento
-  handleMouseMove(event) {
+  // 2) con arrow function
+  handleMouseMove = (event) => {
     // extraemos del evento la posición del mouse relativa al área del contenedor
     const { clientX, clientY} = event;
     // actualizamos el state del componente con setState
