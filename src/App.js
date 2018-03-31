@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import CarItem from './sections/lists';
+import cars from './data/cars.json';
+
 import './App.css';
 
 class Title extends Component {
@@ -43,6 +46,16 @@ class App extends Component {
         <Title />
         {/* Evento onClick del botón */}
         <button onClick={this.handleClick}>Hi There!</button>
+        <ul>
+          {
+            // Transformo cada objeto 
+            cars.map(car => {
+              return (
+                <CarItem key= { car.id } car = { car } />
+              );
+            })
+          }
+        </ul>
         <div 
           // Agrego la props al elemento div usando como funcion el handleMouseMove que habíamos creado
           onMouseMove={this.handleMouseMove}
