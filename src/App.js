@@ -13,7 +13,7 @@ class Title extends Component {
 // Cuando queremos que nuestros componentes tenga un valor por defecto para las props 
 // Default Props
 Title.defaultProps = {
-  text: 'Formulario'
+  text: 'Aprende React'
 };
 
 class App extends Component {
