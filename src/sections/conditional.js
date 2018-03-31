@@ -19,15 +19,12 @@ export default class ConditionalSection extends Component {
     this.state = {mostrarA: false};
   }
 
-  render() {
-    // Utilizamos un operador ternario
-    const conditionalComponent = this.state.mostrarA ? <ComponentA /> : <ComponentB />;
-
+  render() {    
     return (
       <div>
         <h4>Conditional Rendering</h4>
         {/* Usamos el operador ternario para mostrar un componente u otro dependiendo del state que tenga mostrarA  */}
-        {conditionalComponent}
+        {this.state.mostrarA ? <ComponentA /> : <ComponentB />}
       </div>
     );
   }
