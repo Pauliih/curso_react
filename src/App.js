@@ -17,6 +17,11 @@ class Contador extends Component {
   constructor() {
     super();
     this.state = {contador: 1};
+    // Incrementamos el contador en 1 por cada segundo que pasa
+    setInterval(() => {
+      // El state solo se puede modificar con setState y es asíncrono
+      this.setState({ contador: this.state.contador + 1});
+    }, 1000);
   }
 
   render() {
