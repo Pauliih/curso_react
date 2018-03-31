@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CarItem from './sections/lists';
 import Form from './sections/forms';
-import Box from './sections/childenProps';
+import Article from './sections/Article';
 import cars from './data/cars.json';
 
 import './App.css';
@@ -36,8 +36,29 @@ class App extends Component {
         </ul>
         <Form />
         <h4>Children Props</h4>
-        <Box> Hola! Soy un Children</Box>
-        <Box> Otro Box con otro contenido</Box>
+        <Article
+          author="Paula Campos"
+          date={new Date().toLocaleDateString()}
+          title='Artículo sobre la prop children' >
+          <p>El contenido que envolvemos dentro del componente Article será 
+            enviado al componente como this.props.children.</p>
+          <strong>Y mantiene las etiquetas y componentes que hayas añadido 
+            dentro</strong>          
+        </Article>
+        <Article
+          author="Paula Campos"
+          date={new Date().toLocaleDateString()}
+          title='Artículo 2' >
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem ea ipsam id quam voluptatibus libero iste nisi deleniti saepe aspernatur sed praesentium quidem aliquid quis, mollitia dolorum. Maxime, deleniti quos.</p>
+          <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque ea, placeat distinctio tenetur eum doloribus fugit suscipit iste eveniet quia officiis itaque quidem autem vel inventore amet quis quibusdam cumque.</strong>
+        </Article>
+        <Article
+          author="Paula Campos"
+          date={new Date().toLocaleDateString()}
+          title='Artículo 3' >
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, deserunt. Natus beatae asperiores aliquid odio, aspernatur, architecto at alias maiores assumenda voluptatem molestiae iure, sequi magnam laborum? Libero, excepturi ad.</p>
+          <strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo incidunt voluptatibus provident repellendus atque, vel fuga fugit officia dignissimos, voluptatem sit ducimus deserunt placeat soluta, enim animi corporis consequatur mollitia.</strong>
+        </Article>
       </div>
     );
   }
