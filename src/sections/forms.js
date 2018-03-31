@@ -2,18 +2,24 @@ import React, {Component} from 'react';
 
 export default class Form extends Component {
   // Creo el método
-  handleClick = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault(); // para evitar que el botóm haga submit
     const name = this.inputName.value;
     const email = document.getElementById('twitter').value;
     console.log({name, 
       email });
   }
+
+  handleChange = (event) => {
+    console.log('handleChange');
+    console.log(event.target.checked);
+  }
+
   render() {
     return (
       <div>
         <h4>Formularios</h4>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <p>
             <label htmlFor='name'>Nombre: </label>
             <input
@@ -30,13 +36,17 @@ export default class Form extends Component {
               id='twitter'
               name='twitterAccount'
               placeholder='Introduce tu Twitter' />
+          </p>  
+
+          <p>
+            <label>
+              <input onChange={this.handleChange}
+                type='checkbox' />
+                Accepted terms
+            </label>
           </p>
 
-          <button
-            // Le agregamos al botón la props onClick
-            onClick={this.handleClick}>
-            Enviar
-          </button>
+          <button>Enviar</button>
         </form>
       </div>
     );
