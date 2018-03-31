@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 
-class ComponentA extends Component {
+class LoginButton extends Component {
   render() {
-    return <p>Componente A</p>;
+    return <button>Iniciar Sesión</button>;
   }
 }
 
-class ComponentB extends Component {
+class LogoutButton extends Component {
   render() {
-    return <p>Componente B</p>;
+    return (
+      <div>
+        <p>Bienvenido, usuario!</p>
+        <button>Cerrar Sesión</button>
+      </div>
+    );
   }
 }
 
@@ -16,7 +21,7 @@ export default class ConditionalSection extends Component {
   // Agrego un state mostrarA
   constructor() {
     super();
-    this.state = {mostrarA: false};
+    this.state = {isLogin: true};
   }
 
   render() {    
@@ -24,7 +29,7 @@ export default class ConditionalSection extends Component {
       <div>
         <h4>Conditional Rendering</h4>
         {/* Usamos el operador ternario para mostrar un componente u otro dependiendo del state que tenga mostrarA  */}
-        {this.state.mostrarA ? <ComponentA /> : <ComponentB />}
+        {this.state.isLogin ? <LogoutButton /> : <LoginButton />}
       </div>
     );
   }
