@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CarItem from './sections/lists';
 import Form from './sections/forms';
+import Box from './sections/childenProps';
 import cars from './data/cars.json';
 
 import './App.css';
@@ -34,6 +35,9 @@ class App extends Component {
           }
         </ul>
         <Form />
+        <h4>Children Props</h4>
+        <Box> Hola! Soy un Children</Box>
+        <Box> Otro Box con otro contenido</Box>
       </div>
     );
   }
