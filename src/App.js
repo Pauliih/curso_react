@@ -13,12 +13,20 @@ Title.defaultProps = {
 };
 
 class App extends Component {
+  handleClick(event) {
+    // evento sintético, hace que sea compatible con todos los navegadores
+    // soportados por react
+    console.log(event);
+    // nativeEvent muestra el evento nativo
+    console.log(event.nativeEvent);
+    alert('Hi There!');
+  }
   render() {
     return (
       <div className="App">
         <Title />
         {/* Evento onClick del botón */}
-        <button onClick={() => alert('Hi There!')}>Hi There!</button>
+        <button onClick={this.handleClick}>Hi There!</button>
       </div>
     );
   }
