@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CarItem from './sections/lists';
+import Form from './sections/forms';
 import cars from './data/cars.json';
 
 import './App.css';
@@ -12,34 +13,10 @@ class Title extends Component {
 // Cuando queremos que nuestros componentes tenga un valor por defecto para las props 
 // Default Props
 Title.defaultProps = {
-  text: 'Eventos'
+  text: 'Formulario'
 };
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = { mouseX: 0, 
-      mouseY: 0 };
-    // this.handleMouseMove = this.handleMouseMove.bind(this);
-  }
-  // Creo el controlador del evento
-  // 2) con arrow function
-  handleMouseMove = (event) => {
-    // extraemos del evento la posición del mouse relativa al área del contenedor
-    const { clientX, clientY} = event;
-    // actualizamos el state del componente con setState
-    this.setState({mouseX: clientX, 
-      mouseY: clientY});
-  }
-
-  handleClick(event) {
-    // evento sintético, hace que sea compatible con todos los navegadores
-    // soportados por react
-    console.log(event);
-    // nativeEvent muestra el evento nativo
-    console.log(event.nativeEvent);
-    alert('Hi There!');
-  }
   render() {
     return (
       <div className="App">
@@ -56,15 +33,7 @@ class App extends Component {
             })
           }
         </ul>
-        <div 
-          // Agrego la props al elemento div usando como funcion el handleMouseMove que habíamos creado
-          onMouseMove={this.handleMouseMove}
-          style={{border: '1px solid #000', 
-            margin: 10, 
-            padding: 10}}>
-          {/* Mostramos el state actual */}
-          <p>{this.state.mouseX}, {this.state.mouseY}</p>
-        </div>
+        <Form />
       </div>
     );
   }
