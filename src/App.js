@@ -12,6 +12,7 @@ Title.defaultProps = {
   text: 'Primer componente con state'
 };
 
+// Componente Contador
 class Contador extends Component {
   // Para añadir el state
   constructor() {
@@ -25,8 +26,17 @@ class Contador extends Component {
   }
 
   render() {
-    // const contador = 0;
-    return <span>{this.state.contador}</span>;
+    // Props numero es el estado del contador
+    return <ContadorNumero numero={this.state.contador} />;
+  }
+}
+
+// Componente hijo del componente Contador
+class ContadorNumero extends Component {
+  render() {
+    console.log('ContadorNumero render()');
+    // Se vuelve a renderizar con la nueva props
+    return <span>{this.props.numero}</span>;
   }
 }
 
