@@ -11,15 +11,20 @@ class Title extends Component {
 // Cuando queremos que nuestros componentes tenga un valor por defecto para las props 
 // Default Props
 Title.defaultProps = {
-  text: 'Renderizado condicional'
+  text: 'Trabajando con listas'
 };
 
 class App extends Component {
   render() {
+    const arrayOfNumbers = [1, 1, 3, 4, 5];
     return (
       <div className="App">
         <Title />
         <ConditionalSection />
+        {arrayOfNumbers.map((element, index) => {
+          return <p key={index}>Soy el número {element}</p>;
+        })
+        }
       </div>
     );
   }
