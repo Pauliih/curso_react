@@ -18,17 +18,23 @@ class Parrafo extends Component {
 
 class Texto extends Component {
   render() {
-    // const textoSegunBoolean = this.props.isActivated ? 'On!' : 'Off';
+    // Destructuring (se hace en la primera línea del Render)
+    const {
+      arrayOfNumbers, 
+      isActivated, 
+      multiply,
+      objectWithInfo,
+      title
+    } = this.props;
+    const textoSegunBoolean = isActivated ? 'On!' : 'Off';
     // map da como resultado un elemento, tomando cada elemento del array y aplicandole lo que se le especifica
-    // const mappedNumbers = this.props.arrayOfNumbers.map(element => element * 3);
-    const mappedNumbers = this.props.arrayOfNumbers.map(this.props.multiply);
+    const mappedNumbers = arrayOfNumbers.map(multiply);
     return (
       <div>
-        {/* <p>{this.props.text}</p>
-        <p>{this.props.number}</p>
-        <p>{textoSegunBoolean}</p> */}
+        {title}
+        <p>{textoSegunBoolean}</p>
         <p>{mappedNumbers.join(', ')}</p>
-        <p>{this.props.objectWithInfo.key}</p>
+        <p>{objectWithInfo.key}</p>
       </div>
     );
   }
@@ -40,10 +46,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Bienvenido a este curso</h1>
+          <Parrafo title="Hola mundo, desde las props" />
         </header>
-        {/* <h2>Vamos a aprender React</h2> */}
-        <Parrafo title="Hola mundo, desde las props 3" />
         {/* Si a la prop boolean (isActivated) no le pasamos ningún valor, lo tomará como true */}
         <Texto 
           // Se ordenan las props alfabeticamente para encontrarlas más facilmente
@@ -55,7 +59,8 @@ class App extends Component {
           number={2 + 2}
           objectWithInfo={ { key: 'First Value', 
             key2: 'otherValue'} }
-          text="Esto es un strong" 
+          text="Esto es un strong"
+          title={<h1>Este es el título</h1>}
         />
       </div>
     );
