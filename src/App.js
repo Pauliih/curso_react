@@ -4,13 +4,13 @@ import './App.css';
 
 // Componente funcional (solo pinta en la pantalla)
 
-// function Parrafo(props) {
+// function Paragraph(props) {
 //   return <p>{props.title}</p>;
 // }
 
-// const Parrafo = (props) => <p>{props.title}</p>;
+// const Paragraph = (props) => <p>{props.title}</p>;
 
-class Parrafo extends Component {
+class Paragraph extends Component {
   render() {
     return <h3>{this.props.title}</h3>;
   }
@@ -20,18 +20,20 @@ class Texto extends Component {
   render() {
     // Destructuring (se hace en la primera línea del Render)
     const {
+      // Las props son inmutables
       arrayOfNumbers, 
       isActivated, 
       multiply,
-      objectWithInfo,
-      title
+      objectWithInfo
     } = this.props;
+    // No se puede modificar la props title
+    // this.props.title = <h3>Otro título</h3>;
     const textoSegunBoolean = isActivated ? 'On!' : 'Off';
     // map da como resultado un elemento, tomando cada elemento del array y aplicandole lo que se le especifica
     const mappedNumbers = arrayOfNumbers.map(multiply);
     return (
       <div>
-        {title}
+        {this.props.title}
         <p>{textoSegunBoolean}</p>
         <p>{mappedNumbers.join(', ')}</p>
         <p>{objectWithInfo.key}</p>
@@ -46,7 +48,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Parrafo title="Hola mundo, desde las props" />
+          <Paragraph title="Hola mundo, desde las props" />
         </header>
         {/* Si a la prop boolean (isActivated) no le pasamos ningún valor, lo tomará como true */}
         <Texto 
