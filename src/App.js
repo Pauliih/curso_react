@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ConditionalSection from './sections/conditional';
-
+import cars from './data/cars.json';
 import './App.css';
 
 class Title extends Component {
@@ -11,20 +10,36 @@ class Title extends Component {
 // Cuando queremos que nuestros componentes tenga un valor por defecto para las props 
 // Default Props
 Title.defaultProps = {
-  text: 'Trabajando con listas'
+  text: 'Trabajando con listas con objetos'
 };
+
+class CarItem extends Component {
+  render() {
+    const {car} = this.props;
+    return (
+      <li>
+        <p><strong>Nombre: {car.name}</strong></p>
+        <p><strong>Marca: {car.company}</strong></p>
+      </li>
+    );
+  }
+}
 
 class App extends Component {
   render() {
-    const arrayOfNumbers = [1, 1, 3, 4, 5];
     return (
       <div className="App">
         <Title />
-        <ConditionalSection />
-        {arrayOfNumbers.map((element, index) => {
-          return <p key={index}>Soy el número {element}</p>;
-        })
-        }
+        <ul>
+          {
+            // Transformo cada objeto 
+            cars.map(car => {
+              return (
+                <CarItem key={car.id} car={car} />
+              );
+            })
+          }
+        </ul>
       </div>
     );
   }
