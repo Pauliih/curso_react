@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 
 export default class Form extends Component {
   // Creo el método
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault(); // para evitar que el botóm haga submit
-    const name = document.getElementById('name').value;
+    const name = this.inputName.value;
     const email = document.getElementById('twitter').value;
     console.log({name, 
       email });
@@ -19,7 +19,9 @@ export default class Form extends Component {
             <input
               id='name'
               name='userName'
-              placeholder='Introduce el nombre' />
+              placeholder='Introduce el nombre'
+              // Añado el atributo ref al input para recuperar el valor
+              ref={inputElement => this.inputName = inputElement} />
           </p>
 
           <p>
