@@ -14,10 +14,10 @@ Title.defaultProps = {
 
 // Componente Contador
 class Contador extends Component {
-  // Para añadir el state
-  constructor() {
-    super();
-    this.state = {contador: 1};
+  // Para usar props en el constructor, se las pasamos por parametro al constructor y a super
+  constructor(props) {
+    super(props);
+    this.state = {contador: this.props.contadorInicial};
     // Incrementamos el contador en 1 por cada segundo que pasa
     setInterval(() => {
       // El state solo se puede modificar con setState y es asíncrono
@@ -30,6 +30,11 @@ class Contador extends Component {
     return <ContadorNumero numero={this.state.contador} />;
   }
 }
+
+// Default Props
+Contador.defaultProps = {
+  contadorInicial: 0
+};
 
 // Componente hijo del componente Contador
 class ContadorNumero extends Component {
@@ -45,7 +50,8 @@ class App extends Component {
     return (
       <div className="App">
         <Title />
-        <Contador />
+        {/* Para personalizar el contadorInicial */}
+        <Contador contadorInicial={100} />
       </div>
     );
   }
